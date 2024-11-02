@@ -25,8 +25,7 @@
                         <li class="{{ Request::is('user*') ? 'active' : '' }}">
                             <a class="nav-link" href="{{route('user.index')}}"><i class="fas fa-user"></i><span>All Users</span></a>
                         </li>
-
-                        <li class="menu-header">Product</li>
+                        <li class="menu-header">Products</li>
                         <li class="{{ Request::is('product*') ? 'active' : '' }}">
                             <a class="nav-link" href="{{route('product.index')}}"><i class="fas fa-product"></i><span>All Products</span></a>
 

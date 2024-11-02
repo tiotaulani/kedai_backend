@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'User Forms')
+@section('title', 'Product Create')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -16,23 +16,22 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Products Forms</h1>
+                <h1>Input Data Product</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
                     <div class="breadcrumb-item"><a href="#">Forms</a></div>
-                    <div class="breadcrumb-item">Products</div>
+                    <div class="breadcrumb-item">Product</div>
                 </div>
             </div>
 
             <div class="section-body">
-                <h2 class="section-title">Edit Product</h2>
-
+                <h2 class="section-title">Product</h2>
                 <div class="card">
-                    <form action="{{ route('product.update', $product->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('product.update', $product->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="card-header">
-                            <h4>Input Data</h4>
+                            <h4>Input Text</h4>
                         </div>
                         <div class="card-body">
                             <div class="form-group">
@@ -40,17 +39,6 @@
                                 <input type="text" class="form-control @error('name') is-invalid @enderror"
                                        name="name" value="{{ old('name', $product->name) }}">
                                 @error('name')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label>Description</label>
-                                <input type="text" class="form-control @error('description') is-invalid @enderror"
-                                       name="description" value="{{ old('description', $product->description) }}">
-                                @error('description')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -69,7 +57,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Stock</label>
+                                <label>Stok</label>
                                 <input type="number" class="form-control @error('stock') is-invalid @enderror"
                                        name="stock" value="{{ old('stock', $product->stock) }}">
                                 @error('stock')
@@ -80,19 +68,22 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Category</label>
-                                <div class="col-sm-12 col-md-7">
-                                    <select class="form-control selectric @error('category') is-invalid @enderror"
-                                            name="category">
-                                        <option value="food" {{ old('category', $product->category) === 'food' ? 'selected' : '' }}>Food</option>
-                                        <option value="drink" {{ old('category', $product->category) === 'drink' ? 'selected' : '' }}>Drink</option>
-                                        <option value="snack" {{ old('category', $product->category) === 'snack' ? 'selected' : '' }}>Snack</option>
-                                    </select>
-                                    @error('category')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
+                                <label class="form-label">Category</label>
+                                <div class="selectgroup w-100">
+                                    <label class="selectgroup-item">
+                                        <input type="radio" name="category" value="food" class="selectgroup-input"
+                                            checked="">
+                                        <span class="selectgroup-button">Food</span>
+                                    </label>
+                                    <label class="selectgroup-item">
+                                        <input type="radio" name="category" value="drinks" class="selectgroup-input">
+                                        <span class="selectgroup-button">Drink</span>
+                                    </label>
+                                    <label class="selectgroup-item">
+                                        <input type="radio" name="category" value="snacks" class="selectgroup-input">
+                                        <span class="selectgroup-button">Snack</span>
+                                    </label>
+
                                 </div>
                             </div>
 
@@ -108,19 +99,23 @@
                                     </div>
                                 @enderror
                                 @if($product->image)
-                                            <img src="{{ asset('storage/products/' . $product->image) }}" alt="Current Image" style="max-width: 100%; margin-top: 10px;">
-                                        @endif
+                                    <img src="{{ asset('storage/products/' . $product->image) }}" alt="Current Image" style="max-width: 100%; margin-top: 10px;">
+                                @endif
                             </div>
 
 
                         </div>
-
                         <div class="card-footer text-right">
                             <button class="btn btn-primary">Submit</button>
                         </div>
                     </form>
                 </div>
+
             </div>
         </section>
     </div>
 @endsection
+
+@push('scripts')
+@endpush
+

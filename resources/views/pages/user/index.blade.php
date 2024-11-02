@@ -17,8 +17,8 @@
                 </div>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="#">Users</a></div>
-                    <div class="breadcrumb-item">All Users</div>
+                    <div class="breadcrumb-item"><a href="#">All Users</a></div>
+                    <div class="breadcrumb-item">All Products</div>
                 </div>
             </div>
             <div class="section-body">

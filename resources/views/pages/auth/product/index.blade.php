@@ -17,7 +17,7 @@
                 </div>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="#">Products</a></div>
+                    <div class="breadcrumb-item"><a href="#">All Users</a></div>
                     <div class="breadcrumb-item">All Products</div>
                 </div>
             </div>
@@ -54,6 +54,7 @@
                                             <th>Name</th>
                                             <th>Category</th>
                                             <th>Price</th>
+                                            <th>Stok</th>
                                             <th>Photo</th>
                                             <th>Created At</th>
                                             <th>Action</th>
@@ -66,9 +67,10 @@
                                                 <td>
                                                     {{ $product->category }}
                                                 </td>
-
-                                                    {{-- {{ $product->price }} --}}
                                                     <td>   {{ sprintf('Rp. %s', number_format($product->price)) }}
+                                                </td>
+                                                <td>
+                                                    {{ $product->stok }}
                                                 </td>
                                                 <td>
                                                     @if ($product->image)
