@@ -1,0 +1,15 @@
+Perintah-perintah penyambungan SSH ke github
+1. ssh-keygen
+	-jika muncul sebuah perintah silahkan masukan nama repositorynya (namaya nanti kita akan samakan sama nama repository yang akan kita buat nnti di github)
+	-selanjutnya enter enter saja pada keyboard sampai tampil tabel bersisi kode.
+2. - selanjutnya kita ambil kode yang ada sudah kita buat tadi di dalam file tiokey.pub dan masuk ke github pilih setting, ssh dam gpg, setelah masuk ke ssh buat ssh dengan nama tiokey seprti kita setelah menjlankan ssh-keygen tadi)
+   - selanjutnya simpan dan masukan sandi github anda untuk verivikasi dan kembali lagi ke cmd untuk melanjutkan perintah yang lain.
+3. eval $(ssh-agent)
+4. ssh-add /c/tio/latihan/tiokey
+	ket : - /c/tio/latihan (tempat penyimpanan/atau folder penyimpanan filenya)
+	      - tiokey (nama repository yang kita buat di atas tadi setelah kita menjalankan perinyah ssh-keygen)
+5. 
+
+
+git remote set-url origin git@github.com:tiotaulani/latihan.git 
+
