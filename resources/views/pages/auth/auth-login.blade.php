@@ -3,63 +3,81 @@
 @section('title', 'Login')
 
 @push('style')
-    <!-- CSS Libraries -->
-    <link rel="stylesheet"
-        href="{{ asset('library/bootstrap-social/bootstrap-social.css') }}">
+<!-- CSS Libraries -->
+<link rel="stylesheet"
+    href="{{ asset('library/bootstrap-social/bootstrap-social.css') }}">
 @endpush
 
 @section('main')
-    <div class="card card-primary">
-        <div class="card-header">
-            <h4>Login</h4>
-        </div>
+<div class="card card-primary">
+    <div class="card-header">
+        <h4>Login</h4>
+    </div>
 
-        <div class="card-body">
-            <form method="POST"
-                action="{{ route('login') }}"
+    <div class="card-body">
+        <form method="POST"
+            action="{{ route('login') }}"
 
-                {{-- <form method="POST" action="{{ route('login') }}" class="needs-validation" novalidate="">
-                    @csrf --}}
-                class="needs-validation"
-                novalidate="">
-                @csrf
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                        value="{{ old('email') }}" name="email" tabindex="1">
-                    @error('email')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
+            {{-- <form method="POST" action="{{ route('login') }}" class="needs-validation" novalidate="">
+            @csrf --}}
+            class="needs-validation"
+            novalidate="">
+            @csrf
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                    value="{{ old('email') }}" name="email" tabindex="1">
+                @error('email')
+                <div class="invalid-feedback">
+                    {{ $message }}
                 </div>
-                <div class="form-group">
-                    <div class="d-block">
-                        <label for="password" class="control-label">Password</label>
-
-                    </div>
-                    <input id="password" type="password" class="form-control" name="password" tabindex="2">
-                    <div class="invalid-feedback">
-                        please fill in your password
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                        Login
-                    </button>
-                </div>
-            </form>
-
+                @enderror
             </div>
-        </div>
-        <div class="text-muted mt-5 text-center">
-            Don't have an account? <a href="{{ route('register')}}">Create One</a>
-        </div>
-    @endsection
+            <div class="form-group">
+                <div class="d-block">
+                    <label for="password" class="control-label">Password</label>
+                </div>
+                <input id="password" type="password" class="form-control" name="password" tabindex="2">
+                <div class="invalid-feedback">
+                    please fill in your password
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="d-block">
+                <label for="roles" class="control-label">Roles</label>
+                <div class="selectgroup w-100">
+                    <label class="selectgroup-item">
+                        <input type="radio" name="roles" value="ADMIN" class="selectgroup-input"
+                            checked="">
+                        <span class="selectgroup-button">Admin</span>
+                    </label>
+                    <label class="selectgroup-item">
+                        <input type="radio" name="roles" value="STAFF" class="selectgroup-input">
+                        <span class="selectgroup-button">Staff</span>
+                    </label>
+                    <label class="selectgroup-item">
+                        <input type="radio" name="roles" value="USER" class="selectgroup-input">
+                        <span class="selectgroup-button">User</span>
+                    </label>
+                </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                    Login
+                </button>
+            </div>
+        </form>
 
-    @push('scripts')
-        <!-- JS Libraies -->
+    </div>
+</div>
+<div class="text-muted mt-5 text-center">
+    Don't have an account? <a href="{{ route('register')}}">Create One</a>
+</div>
+@endsection
+
+@push('scripts')
+<!-- JS Libraies -->
 
         <!-- Page Specific JS File -->
     @endpush

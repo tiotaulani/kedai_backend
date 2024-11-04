@@ -17,8 +17,8 @@
                 </div>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="#">All Users</a></div>
-                    <div class="breadcrumb-item">All Products</div>
+                    <div class="breadcrumb-item"><a href="#">Users</a></div>
+                    <div class="breadcrumb-item">All Users</div>
                 </div>
             </div>
             <div class="section-body">
@@ -54,8 +54,8 @@
 
                                             <th>Name</th>
                                             <th>Email</th>
-                                            <th>phone</th>
-                                            <th>roles</th>
+                                            <th>Phone</th>
+                                            <th>Roles</th>
                                             <th>Created At</th>
                                             <th>Action</th>
                                         </tr>
@@ -73,24 +73,25 @@
                                                 <td>
                                                     {{ $user->roles }}
                                                 </td>
+
                                                 <td>{{ $user->created_at }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
-                                                        <a href='{{ route('user.edit', $user->id) }}'
-                                                            class="btn btn-sm btn-info btn-icon">
-                                                            <i class="fas fa-edit"></i>
-                                                            Edit
-                                                        </a>
-
-                                                        <form action="{{ route('user.destroy', $user->id) }}" method="POST"
-                                                            class="ml-2">
-                                                            <input type="hidden" name="_method" value="DELETE" />
-                                                            <input type="hidden" name="_token"
-                                                                value="{{ csrf_token() }}" />
-                                                            <button class="btn btn-sm btn-danger btn-icon confirm-delete">
-                                                                <i class="fas fa-times"></i> Delete
+                                                        @if (auth()->user()->roles != 'USER')
+                                                            <a href='{{ route('user.edit', $user->id) }}'
+                                                                class="btn btn-sm btn-info btn-icon">
+                                                                <i class="fas fa-edit"></i> Edit
+                                                            </a>
+                                                        @endif
+                                                        @if (auth()->user()->roles == 'ADMIN')
+                                                        <form action="{{ route('user.destroy', $user->id) }}" method="POST" class="ml-2">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <button class="btn btn-sm btn-danger btn-icon konfirmasi-hapus">
+                                                                <i class="fas fa-times"></i> Hapus
                                                             </button>
                                                         </form>
+                                                        @endif
                                                     </div>
                                                 </td>
                                             </tr>
